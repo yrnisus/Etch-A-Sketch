@@ -6,6 +6,15 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    flex-direction: column;
+}
+
+header {
+position: absolute;
+display: flex;
+flex-direction: column;
+align-items: center;
+top: 0;
 }
 
 .gridContainer {

@@ -1,3 +1,4 @@
+//creates the grid
 function createGrid() {
     for(let i=0; i<16; i++)
     {
@@ -7,32 +8,39 @@ function createGrid() {
         gridContainer.appendChild(newDiv);
     }
 }
+//Delete current grid
+//remake new grid? seperate functions probably
+function clearGrid() {
+    document.getElementById("gridContainer").remove;
+    const gridContainer = document.createElement("div");
+    gridContainer.classList.add('gridContainer');
+    document.body.appendChild(gridContainer);
+    createGrid();
+}
 
 createGrid();
-
-let click = false;
+let clicked = false;
 // On left click color the square being hovered over
 //If mouse is still held down continue to color all over the squares being hovered over
 // Cease coloring squares on mouse release
 
 document.querySelectorAll('.square').forEach(item => {
-    item.addEventListener('click', event=> {
+    // On left click color the square being hovered over
+    item.addEventListener('mousedown', event=> {
         item.classList.add('colored');
-        click == true;
-        alert();
+        clicked = true
+        //If mouse is still held down continue to color all over the squares being hovered over
     })
-    item.addEventListener('mouseover', event => {
-        if(click)
+    item.addEventListener('mouseenter', function () {
+        if(clicked)
         item.classList.add('colored');
     })
- })
+        //ends drag when left click is released
+    item.addEventListener('mouseup', function () {
+        clicked = false;
+    })
+})
 
-// document.querySelectorAll('.square').forEach(item => {
-    
-//     item.addEventListener('mouseover', event => {
-//         document.getElementById("playerHand").src = `./images/${item.id}Left.png`;
-//     })
-//     // change playerHand back to rock when no longer mouseover
-//     item.addEventListener('mouseleave', event => {
-//         document.getElementById("playerHand").src = "./images/rockLeft.png";
-//     })
+document.getElementById('clearBtn').addEventListener('click', event => {
+    clearGrid();
+})

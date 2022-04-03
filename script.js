@@ -1,6 +1,26 @@
+
+//total height and width of the grid is 700px
+//User inputs the amount of squares desired
+//divde 700 by number of squares
+//make each square the correct amount of pixels
+//create the grid
+
+const gridHeight = 700;
+const gridWidth = 700;
+
+function inputSquares() {
+    let numSquares = prompt();
+}
+
+//test
+for (const grid of document.querySelectorAll('.grid')) {
+    grid.style.setProperty('--cols', Math.ceil(Math.sqrt(grid.children.length)));
+  }
+
+
 //creates the grid
 function createGrid() {
-    for(let i=0; i<16; i++)
+    for(let i=0; i<256; i++)
     {
         const newDiv = document.createElement("div");
         newDiv.classList.add('square');
@@ -44,3 +64,5 @@ document.querySelectorAll('.square').forEach(item => {
 document.getElementById('clearBtn').addEventListener('click', event => {
     clearGrid();
 })
+
+

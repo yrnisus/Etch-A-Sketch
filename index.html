@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
-    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <title>Etch-A-Sketch</title>
 </head>
 <body>
     <header>
@@ -14,9 +15,21 @@
     </header>
     <div class="bodyContainer">
     <div class="sidebar">
-        <div class="buttons"><button id="clearBtn">Clear</button></div>
+        <div class="buttonContainer">
+        <div class="buttons" id="gridOutlineBtn">Toggle Grid</div>
+        <div class="buttons" id="clearBtn">Clear</div>
+        <div class="buttons" id="eraseBtn">Eraser</div>
+        </div>
+        <div id="picker"></div>
+        <div class="sliderDiv">
+            <output>24x24</output>
+        <input id='slider' class='slider' type="range" min="1" max="100" value="24" 
+        oninput="this.previousElementSibling.value = this.value + 'x' + this.value">
+        </div>
     </div>
     <div id='grid' class="grid"></div>
+    <div class="sidebar hidden"></div>
     </div>
 </body>
 </html>
+

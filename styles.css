@@ -1,45 +1,51 @@
 body {
-    background-color: #fff;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    flex-direction: column;
-}
-
-div {
-  user-drag: none;
-  -webkit-user-drag: none;
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
 }
 
 header {
-position: absolute;
-height: 100px;
-display: flex;
-flex-direction: column;
-align-items: center;
-top: 0;
+  position: absolute;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
 }
 
 .bodyContainer {
   margin-top: 100px;
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-wrap: wrap-reverse;
+  gap: 30px;
 }
 
 .sidebar {
-  width: 200px;
+  border: 2px solid black;
+  width: 300px;
   height: 700px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  background: #e9ecef;
+}
 
+.hidden {
+  width: 300px;
+  height: 700px;
+  visibility: none;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
 }
 
 .buttonContainer {
@@ -50,13 +56,29 @@ top: 0;
 }
 
 .buttons {
+  background-color: #eee;
+  font-size: 18px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 150px;
-  height: 20px;
-  border: 2px solid black;
-  border-radius: 20px;
+  width: 200px;
+  height: 30px;
+  border: 1px solid black;
+  /* border-radius: 20px; */
+  transition: transform .15s;
+  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.2));
+  -webkit-font-smoothing: antialiased;
+}
+
+.buttons.on {
+  background-color:#495057;
+  color: #eee;
+}
+
+.buttons:hover {
+  transform: scale(1.1);
+  background-color:#495057;
+  color: #eee;
 }
 
 .sliderDiv {
@@ -67,26 +89,41 @@ top: 0;
 }
 
 .slider {
-  width: 150px;
+  width: 200px;
 }
+
+input[type=range]::-ms-track {
+  width: 100%;
+  cursor: pointer;
+
+  /* Hides the slider so custom styles can be added */
+  background: transparent; 
+  border-color: transparent;
+  color: transparent;
+}
+
 
 /* test */
 .grid {
-    --cols: 1;
-    width: 700px;
-    height: 700px;
-    display: inline-grid;
-    grid-template-columns: repeat(var(--cols), 1fr);
-    grid-template-rows: repeat(var(--cols), 1fr);
-    column-gap: 1px;
-    row-gap: 1px;
-    background: black;
-    vertical-align: top;
-    margin: 0 10px 10px 0;
-    border: 2px solid black;
-  }
-  
-  .grid>div {
-    background: #eee;
-  }
+  --cols: 1;
+  width: 700px;
+  height: 700px;
+  display: inline-grid;
+  grid-template-columns: repeat(var(--cols), 1fr);
+  grid-template-rows: repeat(var(--cols), 1fr);
+  column-gap: 1px;
+  row-gap: 1px;
+  background: black;
+  vertical-align: top;
+  border: 2px solid black;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
 
+.grid>div {
+  background: #e9ecef;
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}

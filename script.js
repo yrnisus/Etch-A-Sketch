@@ -1,5 +1,7 @@
 const gridDefault = 24;
 const slider = document.getElementById('slider');
+const gridBtn = document.getElementById('gridOutlineBtn');
+const eraseBtn = document.getElementById('eraseBtn');
 let clicked = false;
 let eraserActive = false;
 let gridOutline = true;
@@ -7,7 +9,7 @@ let selectedColor = 'black';
 const defaultColor = '#eee';
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker
-  width: 150,
+  width: 200,
   // Set the initial color to pure red
   color: "#f00"
 });
@@ -19,6 +21,9 @@ function createGrid(gridSize) {
     newDiv.classList.add('square');
     const gridContainer = document.getElementById("grid");
     gridContainer.appendChild(newDiv);
+    gridContainer.addEventListener('mouseleave', function () {
+      clicked = false;
+    })
   }
   for (const grid of document.querySelectorAll('.grid')) {
     grid.style.setProperty('--cols', Math.ceil(Math.sqrt(grid.children.length)));
@@ -31,6 +36,7 @@ function toggleErase() {
   eraserActive = !eraserActive;
 }
 
+// toggles the square grid outlines 
 function toggleGridOutline() {
   const gridContainer = document.getElementById("grid");
   if (gridOutline) {
@@ -89,6 +95,10 @@ function addListeners() {
 // toggles grid outline on button click
 document.getElementById('gridOutlineBtn').addEventListener('click', event => {
   toggleGridOutline();
+  if (gridOutline)
+    gridBtn.classList.add('on');
+  if (!gridOutline)
+    gridBtn.classList.remove('on');
 })
 // clears grid on button click
 document.getElementById('clearBtn').addEventListener('click', event => {
@@ -98,6 +108,10 @@ document.getElementById('clearBtn').addEventListener('click', event => {
 // turns on eraser on button click
 document.getElementById('eraseBtn').addEventListener('click', event => {
   toggleErase();
+  if (eraserActive)
+  eraseBtn.classList.add('on');
+if (!eraserActive)
+  eraseBtn.classList.remove('on');
 })
 
 // creates grid based on slider value

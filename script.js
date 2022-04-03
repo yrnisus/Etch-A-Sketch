@@ -24,6 +24,7 @@ function createGrid() {
   for (const grid of document.querySelectorAll('.grid')) {
     grid.style.setProperty('--cols', Math.ceil(Math.sqrt(grid.children.length)));
   }
+  addListeners();
   
 }
 
@@ -31,10 +32,8 @@ function createGrid() {
 //Delete current grid
 //remake new grid? seperate functions probably
 function clearGrid() {
-    document.getElementById("gridContainer").remove;
-    const gridContainer = document.createElement("div");
-    gridContainer.classList.add('gridContainer');
-    document.body.appendChild(gridContainer);
+    var grid = document.getElementById('grid');
+    while ( grid.firstChild ) grid.removeChild( grid.firstChild );
     createGrid();
 }
 
@@ -44,7 +43,8 @@ let clicked = false;
 //If mouse is still held down continue to color all over the squares being hovered over
 // Cease coloring squares on mouse release
 
-document.querySelectorAll('.square').forEach(item => {
+function addListeners() {
+  document.querySelectorAll('.square').forEach(item => {
     // On left click color the square being hovered over
     item.addEventListener('mousedown', event=> {
         item.classList.add('colored');
@@ -60,6 +60,7 @@ document.querySelectorAll('.square').forEach(item => {
         clicked = false;
     })
 })
+}
 
 document.getElementById('clearBtn').addEventListener('click', event => {
     clearGrid();

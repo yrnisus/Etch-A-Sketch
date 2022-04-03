@@ -12,22 +12,22 @@ function inputSquares() {
     let numSquares = prompt();
 }
 
-//test
-for (const grid of document.querySelectorAll('.grid')) {
-    grid.style.setProperty('--cols', Math.ceil(Math.sqrt(grid.children.length)));
-  }
-
-
 //creates the grid
 function createGrid() {
-    for(let i=0; i<256; i++)
-    {
-        const newDiv = document.createElement("div");
-        newDiv.classList.add('square');
-        const gridContainer = document.getElementById("gridContainer");
-        gridContainer.appendChild(newDiv);
-    }
+  for(let i=0; i<64; i++)
+  {
+      const newDiv = document.createElement("div");
+      newDiv.classList.add('square');
+      const gridContainer = document.getElementById("grid");
+      gridContainer.appendChild(newDiv);
+  }
+  for (const grid of document.querySelectorAll('.grid')) {
+    grid.style.setProperty('--cols', Math.ceil(Math.sqrt(grid.children.length)));
+  }
+  
 }
+
+
 //Delete current grid
 //remake new grid? seperate functions probably
 function clearGrid() {

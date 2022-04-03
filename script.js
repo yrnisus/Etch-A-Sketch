@@ -3,6 +3,8 @@ const slider = document.getElementById('slider');
 let clicked = false;
 let eraserActive = false;
 let gridOutline = true;
+let selectedColor = 'black';
+const defaultColor = '#eee';
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker
   width: 150,
@@ -12,18 +14,17 @@ var colorPicker = new iro.ColorPicker("#picker", {
 
 //creates the grid
 function createGrid(gridSize) {
-  for(let i=0; i<gridSize ** 2; i++)
-  {
-      const newDiv = document.createElement("div");
-      newDiv.classList.add('square');
-      const gridContainer = document.getElementById("grid");
-      gridContainer.appendChild(newDiv);
+  for (let i = 0; i < gridSize ** 2; i++) {
+    const newDiv = document.createElement("div");
+    newDiv.classList.add('square');
+    const gridContainer = document.getElementById("grid");
+    gridContainer.appendChild(newDiv);
   }
   for (const grid of document.querySelectorAll('.grid')) {
     grid.style.setProperty('--cols', Math.ceil(Math.sqrt(grid.children.length)));
   }
   addListeners();
-  
+
 }
 
 function toggleErase() {
@@ -32,11 +33,11 @@ function toggleErase() {
 
 function toggleGridOutline() {
   const gridContainer = document.getElementById("grid");
-  if(gridOutline) {
+  if (gridOutline) {
     gridContainer.style.columnGap = '0px';
     gridContainer.style.rowGap = '0px';
   }
-  if(!gridOutline) {
+  if (!gridOutline) {
     gridContainer.style.columnGap = '1px';
     gridContainer.style.rowGap = '1px';
   }
@@ -45,9 +46,9 @@ function toggleGridOutline() {
 }
 //Delete current grid
 function clearGrid() {
-    var grid = document.getElementById('grid');
-    while ( grid.firstChild ) grid.removeChild( grid.firstChild );
-    createGrid(slider.value);
+  var grid = document.getElementById('grid');
+  while (grid.firstChild) grid.removeChild(grid.firstChild);
+  createGrid(slider.value);
 }
 
 createGrid(gridDefault);
@@ -57,26 +58,30 @@ createGrid(gridDefault);
 
 function addListeners() {
   document.querySelectorAll('.square').forEach(item => {
-    // On left click color the square being hovered over
-    item.addEventListener('mousedown', event=> {
+    // On left click color the square being hovered over   
+    item.addEventListener('mousedown', event => {
       clicked = true
-      if(!eraserActive)
-        item.classList.add('colored');
-      if(eraserActive)
-        item.classList.remove('colored');
-        //If mouse is still held down continue to color all over the squares being hovered over
+      if (!eraserActive) {
+        // item.classList.add('colored');
+        item.style.background = selectedColor;
+      }
+      if (eraserActive) {
+        // item.classList.remove('colored');
+        item.style.background = defaultColor;
+      }
+      //If mouse is still held down continue to color all over the squares being hovered over
     })
     item.addEventListener('mouseenter', function () {
-        if(clicked)
-        item.classList.add('colored');
-        if(clicked && eraserActive)
-        item.classList.remove('colored');
+      if (clicked)
+        item.style.background = selectedColor;
+      if (clicked && eraserActive)
+        item.style.background = defaultColor;
     })
-        //ends drag when left click is released
+    //ends drag when left click is released
     item.addEventListener('mouseup', function () {
-        clicked = false;
+      clicked = false;
     })
-})
+  })
 }
 
 // Sidebar functions
@@ -87,7 +92,7 @@ document.getElementById('gridOutlineBtn').addEventListener('click', event => {
 })
 // clears grid on button click
 document.getElementById('clearBtn').addEventListener('click', event => {
-    clearGrid();
+  clearGrid();
 })
 
 // turns on eraser on button click
@@ -100,9 +105,7 @@ slider.addEventListener('change', event => {
   clearGrid();
 })
 
-colorPicker.on('color:change', function(color) {
+colorPicker.on('color:change', function (color) {
   // when color changes make that the color for the square
-  document.querySelectorAll('.square.colored').forEach(item => { 
-    item.style.background = color.hexString
-  })
+  selectedColor = color.hexString;
 });

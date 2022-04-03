@@ -123,3 +123,5 @@ colorPicker.on('color:change', function (color) {
   // when color changes make that the color for the square
   selectedColor = color.hexString;
 });
+
+const inputSlider = document.querySelector('input[name=rangeInput]');

@@ -92,18 +92,50 @@ header {
   width: 200px;
 }
 
-input[type=range]::-ms-track {
-  width: 100%;
-  cursor: pointer;
+input[type="range"] {
+  -webkit-appearance: none;
+ }
+ 
+ input[type="range"]:focus {
+  outline: none;
+ }
 
-  /* Hides the slider so custom styles can be added */
-  background: transparent; 
-  border-color: transparent;
-  color: transparent;
-}
+ input[type="range"]::-webkit-slider-runnable-track {
+  border: 1px solid #000;
+  background: #eee;
+  height: 10px;
+  border-radius: 25px;
+ }
+ 
+ input[type="range"]::-moz-range-track {
+  border: 1px solid #000;
+  background: #eee;
+  height: 10px;
+  border-radius: 25px;
+ }
+
+ input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 15px;
+  width: 15px;
+  background: #343a40;
+  border: 2px solid #eee;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 1);
+  margin-top: -3px;
+  border-radius: 50%;
+ }
+ 
+ input[type="range"]::-moz-range-thumb {
+  height: 15px;
+  width: 15px;
+  background: #343a40;
+  border: 2px solid #eee;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 1);
+  margin-top: -3px;
+  border-radius: 50%;
+ }
 
 
-/* test */
 .grid {
   --cols: 1;
   width: 700px;

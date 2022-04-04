@@ -123,6 +123,15 @@ if (!eraserActive)
   eraseBtn.classList.remove('on');
 })
 
+// clears grid on button click
+document.getElementById('fillBtn').addEventListener('click', event => {
+  document.querySelectorAll('.square').forEach(item => {
+        item.style.background = selectedColor;
+      })
+})
+
+
+
 // creates grid based on slider value
 slider.addEventListener('change', event => {
   clearGrid();
@@ -132,8 +141,7 @@ slider.addEventListener('change', event => {
 colorPicker.on('color:change', function (color) {
   // when color changes make that the color for the square
   selectedColor = color.hexString;
-  // changes header color
-  // const headerText = document.getElementById('headerText');
-  // headerText.style.color = selectedColor;
+// change body color
+  document.body.style.background = selectedColor;
 });
 

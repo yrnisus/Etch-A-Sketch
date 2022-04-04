@@ -19,8 +19,6 @@ header {
   /* align-items: center; */
   justify-content: center;
   top: 0;
-  -webkit-text-stroke-width: 1px;
-  -webkit-text-stroke-color: #ecebf3;
 }
 
 .bodyContainer {

@@ -7,9 +7,18 @@ let eraserActive = false;
 let gridOutline = true;
 let selectedColor = 'black';
 const defaultColor = '#eee';
+let screenWidth = screen.width;
+let pickerWidth;
+if(screenWidth < 800) {
+  pickerWidth = 100;
+  
+}
+else {
+  pickerWidth = 200;
+}
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker
-  width: 200,
+  width: pickerWidth,
   // Set the initial color to pure red
   color: "#f00"
 });
@@ -119,9 +128,12 @@ slider.addEventListener('change', event => {
   clearGrid();
 })
 
+
 colorPicker.on('color:change', function (color) {
   // when color changes make that the color for the square
   selectedColor = color.hexString;
+  // changes header color
+  // const headerText = document.getElementById('headerText');
+  // headerText.style.color = selectedColor;
 });
 
-const inputSlider = document.querySelector('input[name=rangeInput]');

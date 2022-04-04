@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,29 +8,41 @@
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/@jaames/iro@5"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>Etch-A-Sketch</title>
 </head>
+
 <body>
     <header>
-    <h1>Etch-A-Sketch</h1>
+        <h1 id="headerText">Etch-A-Sketch</h1>
     </header>
     <div class="bodyContainer">
-    <div class="sidebar">
-        <div class="buttonContainer">
-        <div class="buttons on" id="gridOutlineBtn">Toggle Grid</div>
-        <div class="buttons" id="clearBtn">Clear</div>
-        <div class="buttons" id="eraseBtn">Eraser</div>
+        <div class="sidebar">
+            <div class="buttonContainer">
+                <div class="buttons on" id="gridOutlineBtn">Toggle Grid</div>
+                <div class="buttons" id="clearBtn">Clear</div>
+                <div class="buttons" id="eraseBtn">Eraser</div>
+            </div>
+            <div id="picker"></div>
+            <div class="sliderDiv">
+                <output>24x24</output>
+                <input id='slider' class='slider' type="range" min="1" max="100" value="24"
+                    oninput="this.previousElementSibling.value = this.value + 'x' + this.value">
+            </div>
         </div>
-        <div id="picker"></div>
-        <div class="sliderDiv">
-            <output>24x24</output>
-        <input id='slider' class='slider' type="range" min="1" max="100" value="24" 
-        oninput="this.previousElementSibling.value = this.value + 'x' + this.value">
-        </div>
-    </div>
-    <div id='grid' class="grid"></div>
-    <div class="hidden"></div>
-    </div>
-</body>
-</html>
 
+
+
+        <div id='grid' class="grid"></div>
+        <div class="hidden"></div>
+    </div>
+
+    <!-- Mobile -->
+    
+
+
+</body>
+
+</html>

@@ -7,18 +7,18 @@ let eraserActive = false;
 let gridOutline = true;
 let selectedColor = 'black';
 const defaultColor = '#eee';
-let screenWidth = screen.width;
-let pickerWidth;
-if(screenWidth < 800) {
-  pickerWidth = 100;
+// let screenWidth = screen.width;
+// let pickerWidth;
+// if(screenWidth < 800) {
+//   pickerWidth = 100;
   
-}
-else {
-  pickerWidth = 200;
-}
+// }
+// else {
+//   pickerWidth = 200;
+// }
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker
-  width: pickerWidth,
+  width: 200,
   // Set the initial color to pure red
   color: "#f00"
 });

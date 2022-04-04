@@ -166,9 +166,7 @@ input[type="range"]::-moz-range-thumb {
   user-select: none;
 }
 
-
-/* Mobile */
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
 
   .bodyContainer {
     margin-top: 75px;
@@ -188,7 +186,7 @@ input[type="range"]::-moz-range-thumb {
     height: 75px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+
     justify-content: center;
     top: 0;
     -webkit-text-stroke-width: 1px;
@@ -220,7 +218,7 @@ input[type="range"]::-moz-range-thumb {
 }
 
 
-/* Mobile */
+
 @media (max-width: 400px) {
 
   .bodyContainer {
@@ -241,7 +239,7 @@ input[type="range"]::-moz-range-thumb {
     height: 75px;
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+
     justify-content: center;
     top: 0;
     -webkit-text-stroke-width: 1px;
@@ -269,4 +267,4 @@ input[type="range"]::-moz-range-thumb {
     width: 100px;
   }
 
-}
+}  */

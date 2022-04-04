@@ -1,24 +1,33 @@
-const gridDefault = 24;
+
 const slider = document.getElementById('slider');
 const gridBtn = document.getElementById('gridOutlineBtn');
 const eraseBtn = document.getElementById('eraseBtn');
+const output = document.getElementById('output');
+
 let clicked = false;
 let eraserActive = false;
 let gridOutline = true;
+const gridDefault = 24;
+const mobileDefault = 12;
 let selectedColor = 'black';
 const defaultColor = '#eee';
-// let screenWidth = screen.width;
-// let pickerWidth;
-// if(screenWidth < 800) {
-//   pickerWidth = 100;
-  
-// }
-// else {
-//   pickerWidth = 200;
-// }
+let screenWidth = screen.width;
+let pickerWidth;
+
+
+if(screenWidth < 800) {
+  pickerWidth = 150;
+  createGrid(mobileDefault);
+  slider.value = mobileDefault;
+  output.innerText = `${slider.value} x ${slider.value}`;
+}
+else {
+  pickerWidth = 200;
+  createGrid(gridDefault);
+}
 var colorPicker = new iro.ColorPicker("#picker", {
   // Set the size of the color picker
-  width: 200,
+  width: pickerWidth,
   // Set the initial color to pure red
   color: "#f00"
 });
@@ -65,8 +74,6 @@ function clearGrid() {
   while (grid.firstChild) grid.removeChild(grid.firstChild);
   createGrid(slider.value);
 }
-
-createGrid(gridDefault);
 // On left click color the square being hovered over
 //If mouse is still held down continue to color all over the squares being hovered over
 // Cease coloring squares on mouse release
@@ -145,3 +152,33 @@ colorPicker.on('color:change', function (color) {
   document.body.style.background = selectedColor;
 });
 
+
+
+// Mobile Sidebar
+document.getElementById('gridOutlineBtnMobile').addEventListener('click', event => {
+  toggleGridOutline();
+  if (gridOutline)
+    gridBtn.classList.add('on');
+  if (!gridOutline)
+    gridBtn.classList.remove('on');
+})
+// clears grid on button click
+document.getElementById('clearBtnMobile').addEventListener('click', event => {
+  clearGrid();
+})
+
+// turns on eraser on button click
+document.getElementById('eraseBtnMobile').addEventListener('click', event => {
+  toggleErase();
+  if (eraserActive)
+  eraseBtn.classList.add('on');
+if (!eraserActive)
+  eraseBtn.classList.remove('on');
+})
+
+// clears grid on button click
+document.getElementById('fillBtnMobile').addEventListener('click', event => {
+  document.querySelectorAll('.square').forEach(item => {
+        item.style.background = selectedColor;
+      })
+})

@@ -227,20 +227,23 @@ input[type="range"]::-moz-range-thumb {
   }
 
   .buttons {
+    background: #fff;
     width: 150px;
     margin: 2px;
     border: 1px solid black;
     }
 
   .buttons:hover {
-    transform: none;
+    transform: scale(1.0);
+    background-color: transparent;
+    color: #000;
   }
     .buttons.on {
       background-color: #495057;
       color: #eee;
       border: 1px solid #343a40;
     }
-
+    
     .footer {
       margin-top: 100px;
       font-family: 'Rock Salt', cursive;

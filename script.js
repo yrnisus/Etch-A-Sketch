@@ -149,7 +149,7 @@ colorPicker.on('color:change', function (color) {
   // when color changes make that the color for the square
   selectedColor = color.hexString;
 // change body color
-  // document.body.style.background = selectedColor;
+  document.getElementById('headerText').style.color = selectedColor;
 });
 
 
